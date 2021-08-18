@@ -7,12 +7,9 @@ public class AddressBookMain {
     public static Map<String, AddressBook> addressBookHashMap = new HashMap<>();
     Scanner scanner = new Scanner(System.in);
 
-    // USER INPUT
     public void addDataToAddressBook() {
 
         char chooseContact, chooseCity;
-
-
         do {
             System.out.println("Enter the name of city");
             String cityName = scanner.next();
@@ -65,8 +62,6 @@ public class AddressBookMain {
         }
     }
 
-
-
     // method to view person by city
     public static void viewContactByCityOrState(String city) {
         List<Contact> list = new ArrayList<>();
@@ -103,6 +98,25 @@ public class AddressBookMain {
         list.stream().sorted((p1, p2) -> ((String)p1.getFirstName()).compareTo(p2.getFirstName()))
                 .forEach(contact -> System.out.println(contact.getFirstName()+" "+contact.getLastName()));
     }
+    // method to sort entries by zip
+    public static void sortByZip() {
+        List<Contact> list = new ArrayList<>();
+        for(Map.Entry<String, AddressBook> entries : addressBookHashMap.entrySet()) {
+            list = entries.getValue().getAddressBook().stream().collect(Collectors.toList());
+        }
+        list.stream().sorted((p1, p2) -> ((String)p1.getZip()).compareTo(p2.getZip()))
+                .forEach(contact -> System.out.println(contact.getFirstName()+" "+contact.getLastName()));
+    }
+
+    // method to sort entries by city
+    public static void sortByCity() {
+        List<Contact> list = new ArrayList<>();
+        for(Map.Entry<String, AddressBook> entries : addressBookHashMap.entrySet()) {
+            list = entries.getValue().getAddressBook().stream().collect(Collectors.toList());
+        }
+        list.stream().sorted((p1, p2) -> ((String)p1.getCity()).compareTo(p2.getCity()))
+                .forEach(contact -> System.out.println(contact.getFirstName()+" "+contact.getLastName()));
+    }
 
     // MAIN METHOD
     public static void main(String[] args) {
@@ -119,6 +133,8 @@ public class AddressBookMain {
                     "6. Count Contacts by City" + "\n" +
                     "7. Show Contacts" + "\n" +
                     "8. sort alphabetically " + "\n" +
+                    "9. sort city " + "\n" +
+                    "10. sort zip " + "\n" +
                     "0. Exit" + "\n" +
                     "Enter your choice:");
 
@@ -184,7 +200,14 @@ public class AddressBookMain {
                 case 7:
                    showContact();
                 case 8:
+                    System.out.println("Sort by Name");
                     sortByName();
+                case 9:
+                    System.out.println("Sort by city");
+                    sortByCity();
+                case 10:
+                    System.out.println("Sort by ZIP");
+                    sortByZip();
             }
         } while(choice != 0);
     }
