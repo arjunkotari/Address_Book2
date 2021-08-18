@@ -1,6 +1,5 @@
 package com.bridgelabz;
 
-
 public class Contact {
     private String firstName;
     private String lastName;
@@ -49,7 +48,6 @@ public class Contact {
     public String getCity() {
         return city;
     }
-
     public void setCity(String city) {
         this.city = city;
     }
@@ -73,7 +71,6 @@ public class Contact {
     public String getPhoneNumber() {
         return phoneNumber;
     }
-
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
@@ -81,7 +78,6 @@ public class Contact {
     public String getEmail() {
         return email;
     }
-
     public void setEmail(String email) {
         this.email = email;
     }
@@ -105,6 +101,6 @@ public class Contact {
 
     @Override
     public String toString() {
-        return this.getFirstName() + " " + this.getLastName() + " " + this.getAddress() + " " + this.getPhoneNumber() + " " + this.getEmail();
+        return this.getFirstName() + " " + this.getLastName() + " " + this.getAddress() + " " +this.getState() + " " +this.getZip() + " " + this.getPhoneNumber() + " " + this.getEmail();
     }
 }
