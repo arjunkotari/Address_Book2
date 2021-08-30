@@ -1,6 +1,5 @@
 package com.bridgelabz;
 
-
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -13,7 +12,7 @@ public class AddressBook {
     static Scanner sc = new Scanner(System.in);
     static AddressBook addressBook = new AddressBook();
 
-    public static boolean   addContact(Contacts contact) {
+    public static boolean addContact(Contacts contact) {
         List<Contacts> checkByName = searchByName(contact.getFirstName());
         for (Contacts equalName : checkByName) {
             if (equalName.equals(contact))
@@ -25,20 +24,20 @@ public class AddressBook {
         stateHashMap.put(contact.getState(),contact);
         return true;
     }
-    //method for searching contact by name
+    //method for search contact by name
     public static List<Contacts> searchByName(String name) {//collection list of element
         //stream and lambda for find filter given name from arraylist
         return contactList.stream().filter(person -> person.getFirstName().equalsIgnoreCase(name)).collect(Collectors.toList());
     }
-    //method for searching contact by City
+    //method for search contact by City
     public static List<Contacts> searchByCity(String city) {
         return contactList.stream().filter(person -> person.getCity().equalsIgnoreCase(city)).collect(Collectors.toList());
     }
-    //method for searching contact by State
+    //method for search contact by State
     public static List<Contacts> searchByState(String state) {
         return contactList.stream().filter(person -> person.getState().equalsIgnoreCase(state)).collect(Collectors.toList());
     }
-    //method for viewing contact by name
+    //method for view contact by name
     public static void viewByName(Map<String, Contacts> nameHashMap) {
         nameHashMap.entrySet().stream().forEach(e -> System.out.println(e.getKey() + "="+ e.getValue().toString()));
     }
